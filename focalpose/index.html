@@ -1,359 +1,439 @@
-<script src="http://www.google.com/jsapi" type="text/javascript"></script> 
-<script type="text/javascript">google.load("jquery", "1.3.2");</script>
-<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-
-<style type="text/css">
-	body {
-		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
-		font-weight:300;
-		font-size:16px;
-		margin-left: auto;
-		margin-right: auto;
-		width: 1100px;
-	}
-	
-	h1 {
-		font-size:32px;
-		font-weight:300;
-	}
-	
-	.disclaimerbox {
-		background-color: #eee;		
-		border: 1px solid #eeeeee;
-		border-radius: 10px ;
-		-moz-border-radius: 10px ;
-		-webkit-border-radius: 10px ;
-		padding: 20px;
-	}
-
-	video.header-vid {
-		height: 140px;
-		border: 1px solid black;
-		border-radius: 10px ;
-		-moz-border-radius: 10px ;
-		-webkit-border-radius: 10px ;
-	}
-	
-	img.header-img {
-		height: 140px;
-		border: 1px solid black;
-		border-radius: 10px ;
-		-moz-border-radius: 10px ;
-		-webkit-border-radius: 10px ;
-	}
-	
-	img.rounded {
-		border: 1px solid #eeeeee;
-		border-radius: 10px ;
-		-moz-border-radius: 10px ;
-		-webkit-border-radius: 10px ;
-	}
-	
-	a:link,a:visited
-	{
-		color: #1367a7;
-		text-decoration: none;
-	}
-	a:hover {
-		color: #208799;
-	}
-	
-	td.dl-link {
-		height: 160px;
-		text-align: center;
-		font-size: 22px;
-	}
-	
-	.layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
-		box-shadow:
-		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
-		5px 5px 0 0px #fff, /* The second layer */
-		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
-		10px 10px 0 0px #fff, /* The third layer */
-		10px 10px 1px 1px rgba(0,0,0,0.35), /* The third layer shadow */
-		15px 15px 0 0px #fff, /* The fourth layer */
-		15px 15px 1px 1px rgba(0,0,0,0.35), /* The fourth layer shadow */
-		20px 20px 0 0px #fff, /* The fifth layer */
-		20px 20px 1px 1px rgba(0,0,0,0.35), /* The fifth layer shadow */
-		25px 25px 0 0px #fff, /* The fifth layer */
-		25px 25px 1px 1px rgba(0,0,0,0.35); /* The fifth layer shadow */
-		margin-left: 10px;
-		margin-right: 45px;
-	}
-
-	.paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
-		box-shadow:
-		0px 0px 1px 1px rgba(0,0,0,0.35); /* The top layer shadow */
-
-		margin-left: 10px;
-		margin-right: 45px;
-	}
-
-
-	.layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
-		box-shadow:
-		0px 0px 1px 1px rgba(0,0,0,0.35), /* The top layer shadow */
-		5px 5px 0 0px #fff, /* The second layer */
-		5px 5px 1px 1px rgba(0,0,0,0.35), /* The second layer shadow */
-		10px 10px 0 0px #fff, /* The third layer */
-		10px 10px 1px 1px rgba(0,0,0,0.35); /* The third layer shadow */
-		margin-top: 5px;
-		margin-left: 10px;
-		margin-right: 30px;
-		margin-bottom: 5px;
-	}
-	
-	.vert-cent {
-		position: relative;
-		top: 50%;
-		transform: translateY(-50%);
-	}
-	
-	hr
-	{
-		border: 0;
-		height: 1px;
-		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
-	}
-
-	code,
-    kbd,
-    pre,
-    samp {
-        font-family: monospace, serif;
-        font-size: 1em;
-    }
-
-    pre {
-        white-space: pre-line;
-        width: 850px;
-        text-align: left;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
-
-    thead {
-        display: table-header-group;
-    }
-
-    code,
-    pre {
-        font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
-    }
-
-    pre {
-        display: block;
-        padding: 10px;
-        margin: 10px 120px 10px;
-        font-size: 14px;
-        line-height: 1.428571429;
-        color: #333333;
-        background-color: #f5f5f5;
-        border: 1px solid #cccccc;
-        border-radius: 4px;
-    }
-
-    pre.prettyprint {
-        margin-bottom: 20px;
-    }
-
-    pre code {
-        padding: 0;
-        font-size: inherit;
-        color: inherit;
-        white-space: pre-wrap;
-        background-color: transparent;
-        border: 0;
-    }
-
-	.block {
-		display: block;
-		width: 850px;
-		text-align: justify;
-	}
-</style>
-
+<!DOCTYPE html>
 <html>
 <head>
-	<title>FocalPose</title>
-	<meta property="og:image" content="resources/approach.png"/> 
-	<meta property="og:title" content="FocalPose++: Focal Length and Object Pose Estimation via Render and Compare" />
-	<meta property="og:description" content="A render and compare method for 6D pose estimation in uncalibrated settings" />
+  <meta charset="utf-8">
+  <meta name="description"
+        content="FocalPose++: Focal Length and Object Pose Estimation via Render and Compare.">
+  <meta name="keywords" content="FocalPose++, 6D pose, focal length, render and compare, computer vision">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FocalPose++: Focal Length and Object Pose Estimation via Render and Compare</title>
 
-	<!-- Get from Google Analytics -->
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<!-- <script async src=""></script> 
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
+  
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
 
-		gtag('config', '');
-	</script> -->
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!--link rel="icon" href="./static/images/favicon.svg"-->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
-
 <body>
-	<br>
-	<center>
-		<div style="font-size:36px;margin-bottom: 15px;">FocalPose++: Focal Length and Object Pose Estimation<br>via Render and Compare</div>
-	<div style="width: 844px; line-height: 2em; margin-bottom: 5px;">
-    	<span style="font-size:24px;margin: 10px;"><a href="https://cifkam.github.io/">Martin&nbsp;Cífka</a>*</span>
-    	<span style="font-size:24px;margin: 10px;"><a href="https://ponimatkin.github.io/">Georgy&nbsp;Ponimatkin</a>*</span>
-    	<span style="font-size:24px;margin: 10px;"><a href="https://ylabbe.github.io">Yann&nbsp;Labbé</a></span>
-    	<span style="font-size:24px;margin: 10px;"><a href="http://bryanrussell.org">Bryan&nbsp;Russell</a></span>
-    	<span style="font-size:24px;margin: 10px;"><a href="https://imagine.enpc.fr/~aubrym/">Mathieu&nbsp;Aubry</a></span>
-    	<span style="font-size:24px;margin: 10px;"><a href="https://petrikvladimir.github.io/">Vladimir&nbsp;Petrik</a></span>
-    	<span style="font-size:24px;margin: 10px;"><a href="http://people.ciirc.cvut.cz/~sivic/">Josef&nbsp;Sivic</a></span>
-	</div>
-	<div style="margin-bottom: 10px;">
-		<i>*equal contribution</i>
-	</div>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://cifkam.github.io">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <!--
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://...github.io">
+              ...
+            </a>
+            <a class="navbar-item" href="https://...github.io">
+              ...
+            </a>
+            <a class="navbar-item" href="https://...github.io">
+              ...
+            </a>
+            <a class="navbar-item" href="https://...github.io">
+              ...
+            </a>
+          </div>
+        -->
+      </div>
+    </div>
+
+  </div>
+</nav>
 
 
-	<div style="font-size: 24px;">
-		<span style="font-size:24px; margin: 0 10px;"><a href="https://arxiv.org/abs/2312.02985">[Paper]</a></span>
-		<span style="font-size:24px; margin: 0 10px;"><a href="https://github.com/cifkam/FocalPosePP">[Code]</a></span><br>
-	</div>
-	<br>
-	</center>
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">FocalPose++: Focal Length and Object Pose Estimation via Render and Compare</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://cifkam.github.io">Martin Cífka</a><sup>1,†</sup>,</span>
+            <span class="author-block">
+              <a href="https://ponimatkin.github.io">Georgy Ponimatkin</a><sup>1,†</sup>,</span>
+            <span class="author-block">
+              <a href="https://ylabbe.github.io">Yann Labbé</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://bryanrussell.org">Bryan Russell</a><sup>3</sup>,
+            </span>
+            <br>
+            <span class="author-block">
+              <a href="https://imagine.enpc.fr/~aubrym">Mathieu Aubry</a><sup>4</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://petrikvladimir.github.io">Vladimir Petrik</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="http://people.ciirc.cvut.cz/~sivic/">Josef Sivic</a><sup>1</sup>
+            </span>
+          </div>
 
-	<center>
-		<div>
-			<img src="resources/teaser_1_input.jpeg", height="180px", width="240px">
-			<img src="resources/teaser_1_pred.jpeg", height="180px", width="240px">
-		</div>
-		<div>
-			<img src="resources/teaser_2_input.jpeg", height="180px", width="240px">
-			<img src="resources/teaser_2_pred.jpeg", height="180px", width="240px">
+          <div class="is-size-5 publication-authors">
+            <span class="author-block" style="margin: 10px 0px;"><i><sup>†</sup>equal contribution</span></i>
+            <br>
+            <span class="author-block" style="margin: 0px 6px;"><sup>1</sup>CIIRC, CTU Prague</span>
+            <span class="author-block" style="margin: 0px 6px;"><sup>2</sup>Reality Labs, Meta Platforms</span>
+            <span class="author-block" style="margin: 0px 6px;"><sup>3</sup>Adobe Research</span>
+            <span class="author-block" style="margin: 0px 6px;"><sup>4</sup>LIGM, École des Ponts</span>
+            
+          </div>
 
-		</div>
-		<br>
-		<div class="block">
-			Given a single input photograph (<b>left</b>) and a known 3D model, our approach accurately estimates the 6D camera-object pose together with the focal length of the camera (<b>right</b>), here shown by overlaying the aligned 3D model over the input image. Our approach handles a large range of focal lengths and the resulting perspective effects. 
-		</div>
-	</center>
-	<br>
-	<hr>
-	
-	<center>
-		<h1>Abstract</h1>
-		<div class="block">
-		We introduce FocalPose++, a neural <i>render-and-compare</i> method for jointly estimating the camera-object 6D pose and camera focal length given a single RGB input image depicting a known object.
-		The contributions of this work are threefold.
-		First, we derive a focal length update rule that extends an existing state-of-the-art render-and-compare  6D pose estimator to address the joint estimation task.  
-		Second, we investigate several different loss functions for jointly estimating the object pose and focal length. We find that a combination of direct focal length regression with a reprojection loss disentangling the contribution of translation, rotation, and focal length leads to improved results. 
-		Third, we explore the effect of different synthetic training data on the performance of our method. Specifically, we investigate different distributions used for sampling object's 6D pose and camera's focal length when rendering the synthetic images, and show that parametric distribution fitted on real training data works the best.
-		We show results on three challenging benchmark datasets that depict known 3D models in uncontrolled settings. We demonstrate that our focal length and 6D pose estimates have lower error than the  existing state-of-the-art methods.
-		</div>
-	</center>
-	<br>
-	<hr>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2312.02985"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2312.02985"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link.
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <i class="fab fa-youtube"></i>
+                </span>
+                <span>Video</span>
+              </a>
+              </span>
+              -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/cifkam/FocalPosePP"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-
-	<center>
-		<h1>Approach Overview</h1>
-		<div>
-			<img style="width:450px" src="resources/approach.png"/></td>
-		</div>
-		<div style="text-align: justify; width: 850px; margin: 15px 0;">
-			<b>FocalPose overview.</b> Given a single  in-the-wild RGB input image \(I\) of a known object 3D model \(\mathcal{M}\), parameters \(\theta^k\) composed of focal length \(f^k\) and the object 6D pose (3D translation \(t^k\) and 3D rotation \(R^k\)) are iteratively updated using our render-and-compare approach. Rendering \(R\), together with the input image \(I\), are given to a deep neural network \(F\) that predicts update \(\Delta \theta_k\), which is then converted into parameter update \(\theta^{k+1}\) using a non-linear update rule \(U\).
-		</div>
-	</center>
-	<br>
-	<hr>
-
-	<center>
-		<h1>Applications</h1>
-		<div>
-			<video class="header-vid" style="width: 850px; height: 639px;" controls>
-				<source src="resources/application_robo.mp4" type="video/mp4">
-				Your browser does not support the video tag.
-			</div>
-			<br>
-		<div class="block">
-			<b>Application in robotics: object manipulation from Internet video.</b>
-			Given an input video with a known object, we estimate its 6D pose in each video frame.
-			In the first frame, we estimate object's 6D pose and camera focal length using our method (coarse and refiner model).
-			In the following frames, we reuse the 6D pose and focal length from the previous frame as initialization and apply only the refiner to track the object.
-			To obtain the final trajectory, we use the estimated median focal length, recompute z-translation accordingly, and apply trajectory smoothing.
-			Finally, we compute inverse kinematics and imitate the object manipulation with a Franka Emika Panda in simulation and on the real robot.
-		</div>
-		
-
-		<br><br><br>
-
-		<div>
-			<img src="resources/application_cg.jpg" width="850">
-		</div>
-		<br>
-		<div class="block">
-			<b>Application in computer graphics: 3D-aware image augmentation.</b>
-			Given an input image (first column), we estimate the camera focal length and 6D pose of the table using our FocalPose++ approach (second column).
-			The estimated geometry of the table allows us to randomly place three new 3D objects on the table and render them in the original image (third and fourth column).
-			Note how the new objects are inserted into the scene respecting its geometry and perspective effects.
-		</div>
-
-		
-
-	</center>
-	<br>
-	<hr>
-
-
-	<table align=center width=850px>
-		<center><h1>Paper and Supplementary Material</h1></center>
-		<tr>
-			<td>
-				<a href="https://arxiv.org/abs/2312.02985">
-					<img class="layered-paper-big" style="height:175px" src="resources/paper_titlepage.png"/>
-				</a>
-			</td>
-			<td>
-				<span style="font-size:14pt">M.&nbsp;C&iacute;fka, G.&nbsp;Ponimatkin, Y.&nbsp;Labb&eacute;, B.&nbsp;Russell, M.&nbsp;Aubry, V.&nbsp;Petr&iacute;k, J.&nbsp;Sivic.<br>
-				<b>FocalPose++: Focal Length and Object Pose Estimation via Render and Compare.</b>
-				<br>
-				TPAMI, 2024.
-				<br>
-				(hosted on <a href="https://arxiv.org/abs/2312.02985">ArXiv</a>)
-				<br>
-			</td>
-		</tr>
-	</table>
-	<br>
-	<br>
-	<table width=600px>
-		<tr><pre>
-<tt>@article{cifka2024focalpose++,
-	title={{F}ocal{P}ose++: {F}ocal {L}ength and {O}bject {P}ose {E}stimation via {R}ender and {C}ompare},
-	author={C{\'\i}fka, Martin and Ponimatkin, Georgy and Labb{\'e}, Yann and Russell, Bryan and Aubry, Mathieu and Petrik, Vladimir and Sivic, Josef},
-	journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
-	year={2024},
-	publisher={IEEE},
-	pages={1-17},
-	doi={10.1109/TPAMI.2024.3475638}
-}
-</tt></pre></tr>
-	</table>
-	<br>
-	<hr>
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <!--video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video-->
+      <table>
+        <tr>
+          <td><img src="static/images/teaser_1_input.jpeg", height="300", width="400" style="display: block;"></td>
+          <td><img src="static/images/teaser_1_pred.jpeg", height="300", width="400" style="display: block;"></td>
+        </tr>
+        <tr>  
+          <td><img src="static/images/teaser_2_input.jpeg", height="300", width="400" style="display: block;"></td>
+          <td><img src="static/images/teaser_2_pred.jpeg", height="300", width="400" style="display: block;"></td>
+        </tr>
+      </table>
+      <h2 class="subtitle">
+        Given a single input photograph (<b>left</b>) and a known 3D model, our approach accurately estimates the 6D camera-object pose together with the focal length of the camera (<b>right</b>), here shown by overlaying the aligned 3D model over the input image. Our approach handles a large range of focal lengths and the resulting perspective effects. 
+      </h2>
+    </div>
+  </div>
+</section>
 
 
-	<center>
-		<h1>Acknowledgements</h1>
-		<div class="block">
-			This work was partly supported by the Ministry of Education, Youth and Sports of the Czech Republic through the e-INFRA CZ (ID:90140), the French government under management of Agence Nationale de la Recherche as part of the "Investissements d'avenir" program, reference ANR19-P3IA-0001 (PRAIRIE 3IA Institute), and by the European Union's Horizon Europe projects euROBIN (No. 101070596),  AGIMUS (No. 101070165), ERC DISCOVER (No. 101076028) and ERC FRONTIER (No. 101097822). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Commission. Neither the European Union nor the European Commission can be held responsible for them.
-		</div>
-	</center>
+<!--section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
 
-<br>
+        <div class="item item-steve">
+          <video poster="" id="steve" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/steve.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        <div class="item item-chair-tp">
+          <video poster="" id="chair-tp" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/chair-tp.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section-->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We introduce <b>FocalPose++</b>, a neural render-and-compare method for jointly estimating the camera-
+            object 6D pose and camera focal length given a single RGB input image depicting a known object.
+            The contributions of this work are threefold. First, we derive a focal length update rule that
+            extends an existing state-of-the-art render-and-compare 6D pose estimator to address the joint
+            estimation task. Second, we investigate several different loss functions for jointly estimating
+            the object pose and focal length. We find that a combination of direct focal length regression
+            with a reprojection loss disentangling the contribution of translation, rotation, and focal
+            length leads to improved results. Third, we explore the effect of different synthetic training
+            data on the performance of our method. Specifically, we investigate different distributions used
+            for sampling object's 6D pose and camera's focal length when rendering the synthetic images, and
+            show that parametric distribution fitted on real training data works the best. We show results
+            on three challenging benchmark datasets that depict known 3D models in uncontrolled settings.
+            We demonstrate that our focal length and 6D pose estimates have lower error than the existing
+            state-of-the-art methods.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!--div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div-->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Approach Overview</h2>
+        <div class="content has-text-justified">
+          <div class="content">
+          <img src="./static/images/approach.png" alt="Approach overview."/>
+          <p>
+            <b>FocalPose overview.</b> Given a single  in-the-wild RGB input image \(I\) of a known object
+            3D model \(\mathcal{M}\), parameters \(\theta^k\) composed of focal length \(f^k\) and the object
+            6D pose (3D translation \(t^k\) and 3D rotation \(R^k\)) are iteratively updated using our
+            render-and-compare approach. Rendering \(R\), together with the input image \(I\), are given to a
+            deep neural network \(F\) that predicts update \(\Delta \theta_k\), which is then converted into
+            parameter update \(\theta^{k+1}\) using a non-linear update rule \(U\).
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!--div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div-->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+
+<!--section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Visual Effects</h2>
+          <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p>
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dollyzoom-stacked.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+      <div class="column">
+        <h2 class="title is-3">Matting</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              As a byproduct of our method, we can also solve the matting problem by ignoring
+              samples that fall outside of a bounding box during rendering.
+            </p>
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/matting.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section-->
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Applications</h2>
+        <div class="content has-text-justified">
+          <video id="matting-video" controls playsinline height="100%">
+            <source src="static/videos/application_robo.mp4" type="video/mp4">
+          </video>
+          <p>
+            <b>Application in robotics: object manipulation from Internet video.</b> Given an input video with a known
+            object, we estimate its 6D pose in each video frame. In the first frame, we estimate object's 6D pose and
+            camera focal length using our method (coarse and refiner model). In the following frames, we reuse the 6D
+            pose and focal length from the previous frame as initialization and apply only the refiner to track the
+            object. To obtain the final trajectory, we use the estimated median focal length, recompute z-translation
+            accordingly, and apply trajectory smoothing. Finally, we compute inverse kinematics and imitate the object
+            manipulation with a Franka Emika Panda in simulation and on the real robot.
+          </p>
+
+          <hr>
+          <br>
+          
+          <img src="static/images/application_cg.jpg" alt="Application in computer graphics">
+          <p>
+            <b>Application in computer graphics: 3D-aware image augmentation.</b>
+			      Given an input image (first column), we estimate the camera focal length and 6D pose of the table
+            using our FocalPose++ approach (second column). The estimated geometry of the table allows us to
+            randomly place three new 3D objects on the table and render them in the original image (third and
+            fourth column). Note how the new objects are inserted into the scene respecting its geometry and
+            perspective effects.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{cifka2024focalpose++,
+    title={{F}ocal{P}ose++: {F}ocal {L}ength and {O}bject {P}ose {E}stimation via {R}ender and {C}ompare},
+    author={C{\'\i}fka, Martin and Ponimatkin, Georgy and Labb{\'e}, Yann and Russell, Bryan and Aubry, Mathieu and Petrik, Vladimir and Sivic, Josef},
+    journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+    year={2024},
+    publisher={IEEE},
+    pages={1-17},
+    doi={10.1109/TPAMI.2024.3475638}
+}</code></pre>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Acknowledgements</h2>
+        <div class="content has-text-justified">
+          <p>
+            This work was partly supported by the Ministry of Education, Youth and Sports of the Czech Republic
+            through the e-INFRA CZ (ID:90140), the French government under management of Agence Nationale de la
+            Recherche as part of the "Investissements d'avenir" program, reference ANR19-P3IA-0001 (PRAIRIE 3IA
+            Institute), and by the European Union's Horizon Europe projects euROBIN (No. 101070596), AGIMUS (No.
+            101070165), ERC DISCOVER (No. 101076028) and ERC FRONTIER (No. 101097822). Views and opinions
+            expressed are however those of the author(s) only and do not necessarily reflect those of the European
+            Union or the European Commission. Neither the European Union nor the European Commission can be held
+            responsible for them.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/pdf/2312.02985">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/cifkam" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+            and is based on the template from the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project page.
+          </p>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
-

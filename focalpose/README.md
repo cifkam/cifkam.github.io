@@ -1,11 +1,20 @@
-## <b>Webpage template</b>
+# FocalPose++
 
-This webpage template was made for a [colorful ECCV paper](http://richzhang.github.io/colorization/). See how the webpage looks [here](https://richzhang.github.io/webpage-template).
+This is the repository that contains source code for the [FocalPose++ website](https://focalposepp.github.io/).
 
-To use this template, clone the repo:
-
+If you find FocalPose++ useful for your work please cite:
 ```
-git clone https://github.com/richzhang/webpage-template.git
+@article{cifka2024focalpose++,
+    title={{F}ocal{P}ose++: {F}ocal {L}ength and {O}bject {P}ose {E}stimation via {R}ender and {C}ompare},
+    author={C{\'\i}fka, Martin and Ponimatkin, Georgy and Labb{\'e}, Yann and Russell, Bryan and Aubry, Mathieu and Petrik, Vladimir and Sivic, Josef},
+    journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+    year={2024},
+    publisher={IEEE},
+    pages={1-17},
+    doi={10.1109/TPAMI.2024.3475638}
+}
 ```
 
-Copy the contents into a `gh-pages` branch of a GitHub repo. That will automatically make a webpage under address [GITHUB_USERNAME.github.io/REPO_NAME](GITHUB_USERNAME.github.io/REPO_NAME).
+# Website License
+This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>
+and is based on the template from the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> project page.
