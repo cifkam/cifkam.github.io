@@ -23,3 +23,27 @@ $max-content-width: {{ site.max_width }};
   "tabler-icons/tabler-icons-filled.scss",
   "tabler-icons/tabler-icons-outline.scss"
 ;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.social .contact-icons {
+  font-size: 2.5rem;
+}
+
+.contact-icons a {
+  margin: 0px 5px;
+}
+
+.social {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--global-divider-color);
+}
+
+a.navbar-brand.active.title {
+  color: var(--global-text-color-light);
+}
