@@ -34,7 +34,7 @@
 
 @article{malenicky2025physpose,
   title={{P}hys{P}ose: {R}efining 6{D} {O}bject {P}oses with {P}hysical {C}onstraints},
-  author={Malenick{\`y}, Martin and C{\'\i}fka, Martin and Fourmy, M{\'e}d{\'e}ric and Montaut, Louis and Carpentier, Justin and Sivic, Josef and Petrik, Vladimir},
+  author={Malenick{\'y}, Martin and C{\'i}fka, Martin and Fourmy, M{\'e}d{\'e}ric and Montaut, Louis and Carpentier, Justin and Sivic, Josef and Petrik, Vladimir},
   journal={arXiv preprint arXiv:2503.23587},
   year={2025},
   abstract={Accurate 6D object pose estimation from images is a key problem in object-centric scene understanding, enabling applications in robotics, augmented reality, and scene reconstruction. Despite recent advances, existing methods often produce physically inconsistent pose estimates, hindering their deployment in real-world scenarios. We introduce PhysPose, a novel approach that integrates physical reasoning into pose estimation through a postprocessing optimization enforcing non-penetration and gravitational constraints. By leveraging scene geometry, PhysPose refines pose estimates to ensure physical plausibility. Our approach achieves state-of-the-art accuracy on the YCB-Video dataset from the BOP benchmark and improves over the state-of-the-art pose estimation methods on the HOPE-Video dataset. Furthermore, we demonstrate its impact in robotics by significantly improving success rates in a challenging pick-and-place task, highlighting the importance of physical consistency in real-world applications.},
@@ -45,7 +45,7 @@
 
 @article{mikevstikova2025alignpose,
   title={{A}lign{P}ose: {G}eneralizable 6{D} {P}ose {E}stimation via {M}ulti-view {F}eature-metric {A}lignment},
-  author={Mike{\v{s}}t{\'\i}kov{\'a}, Anna {\v{S}}. and Fourmy, M{\'e}d{\'e}ric and C{\'\i}fka, Martin and Sivic, Josef and Petrik, Vladimir},
+  author={Mike{\v{s}}t{\'i}kov{\'a}, Anna {\v{S}}. and Fourmy, M{\'e}d{\'e}ric and C{\'i}fka, Martin and Sivic, Josef and Petrik, Vladimir},
   journal={arXiv preprint arXiv:2512.20538},
   year={2025},
   abstract={Single-view RGB model-based object pose estimation methods achieve strong generalization but are fundamentally limited by depth ambiguity, clutter, and occlusions. Multi-view pose estimation methods have the potential to solve these issues, but existing works rely on precise single-view pose estimates or lack generalization to unseen objects. We address these challenges via the following three contributions. First, we introduce AlignPose, a 6D object pose estimation method that aggregates information from multiple extrinsically calibrated RGB views and does not require any object-specific training or symmetry annotation. Second, the key component of this approach is a new multi-view feature-metric refinement specifically designed for object pose. It optimizes a single, consistent world-frame object pose minimizing the feature discrepancy between on-the-fly rendered object features and observed image features across all views simultaneously. Third, we report extensive experiments on four datasets (YCB-V, T-LESS, ITODD-MV, HouseCat6D) using the BOP benchmark evaluation and show that AlignPose outperforms other published methods, especially on challenging industrial datasets where multiple views are readily available in practice.},
