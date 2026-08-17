@@ -2,7 +2,7 @@
 # the commented lines are the default social media links supported by the template
 # the socials will be displayed in the order they are defined here
 
-email: ***REMOVED*** # your email address
+contact_url: /contact/ # contact form page (keeps the email address out of the site source)
 github_username: cifkam # your GitHub user name
 scholar_userid: uUyl_uIAAAAJ # your Google Scholar ID
 orcid_id: 0009-0003-6276-134X # your ORCID ID

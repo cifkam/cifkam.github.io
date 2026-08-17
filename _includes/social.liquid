@@ -10,6 +10,8 @@
       <a href="{{ social[1] }}" title="DBLP"><i class="ai ai-dblp"></i></a>
     {% when 'discord_id' %}
       <a href="https://discord.com/users/{{ social[1] }}" title="Discord"><i class="fa-brands fa-discord"></i></a>
+    {% when 'contact_url' %}
+      <a href="{{ social[1] | relative_url }}" title="contact"><i class="fa-solid fa-envelope"></i></a>
     {% when 'email' %}
       <a href="mailto:{{ social[1] | encode_email }}" title="email"><i class="fa-solid fa-envelope"></i></a>
     {% when 'facebook_id' %}
