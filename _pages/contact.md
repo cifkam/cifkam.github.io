@@ -4,7 +4,7 @@ permalink: /contact/
 title: contact
 nav: true
 nav_order: 5
-description: 
+description:
 ---
 
 <form id="contact-form" class="contact-form">
@@ -30,7 +30,7 @@ description:
     <textarea class="form-control" id="contact-message" name="message" rows="7" required></textarea>
   </div>
 
-  <button type="submit" class="btn btn-sm z-depth-0" id="contact-submit">Send</button>
+<button type="submit" class="btn btn-sm z-depth-0" id="contact-submit">Send</button>
 
   <div id="contact-result" class="contact-result" role="status" aria-live="polite"></div>
 </form>
