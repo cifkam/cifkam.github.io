@@ -37,6 +37,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/_pages/photography/";
           },
+        },{id: "nav-contact",
+          title: "contact",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/contact/";
+          },
         },{id: "post-a-post-with-image-galleries",
       
         title: "a post with image galleries",
@@ -446,11 +453,11 @@ ninja.data = [{
           section: "Projects",handler: () => {
               window.location.href = "/projects/9_project/";
             },},{
-        id: 'social-email',
-        title: 'email',
+        id: 'social-contact',
+        title: 'contact',
         section: 'Socials',
         handler: () => {
-          window.open("mailto:***REMOVED***", "_blank");
+          window.open("/contact/", "_blank");
         },
       },{
         id: 'social-github',
