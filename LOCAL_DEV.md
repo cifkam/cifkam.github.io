@@ -3,6 +3,74 @@
 Personal notes for running this site locally. See `INSTALL.md` for the upstream
 al-folio instructions.
 
+## First-time setup
+
+### Prerequisites
+
+| Tool                | Needed for                                                       | Check                     |
+| ------------------- | ---------------------------------------------------------------- | ------------------------- |
+| Ruby + Bundler      | Jekyll itself                                                    | `ruby -v`, `bundle -v`    |
+| ImageMagick         | responsive WebP images (`imagemagick: enabled` in `_config.yml`) | `magick -version`         |
+| Node.js + npm       | Prettier formatting only                                         | `node -v`                 |
+| `jupyter-nbconvert` | only if a post embeds a notebook                                 | `which jupyter-nbconvert` |
+
+On Arch: `sudo pacman -S ruby ruby-bundler imagemagick nodejs npm`. The Jupyter
+one is optional — without it the build just prints a `jupyter-nbconvert not
+found` warning and carries on.
+
+### Steps
+
+From a fresh clone:
+
+```bash
+bundle config set --local path vendor/bundle   # once per clone
+bundle install                                 # installs into ./vendor/bundle
+bundle exec jekyll serve --livereload
+```
+
+The first `bundle install` takes a couple of minutes; the first build another
+~20 s while ImageMagick generates WebP variants.
+
+Optionally, for the formatter (see below):
+
+```bash
+npm install
+```
+
+### Why the `bundle config` line is needed
+
+The system gem directory (`/usr/lib/ruby/gems`) is root-owned, so a plain
+`bundle install` fails with:
+
+```
+Permission denied @ dir_s_mkdir - /usr/lib/ruby/gems/3.4.0/cache (Errno::EACCES)
+```
+
+Pointing Bundler at `vendor/bundle` sidesteps it without needing `sudo`. The
+setting is stored in `.bundle/config`, which is gitignored, so it's local to
+this checkout and persists — but a fresh clone needs it again.
+
+**To fix this once for every Jekyll repo** instead of per-clone, set it
+globally:
+
+```bash
+bundle config set --global path ~/.gem/bundle
+```
+
+That writes to `~/.bundle/config` and applies everywhere, so new projects work
+without any per-repo step.
+
+### Troubleshooting
+
+| Symptom                                                | Cause and fix                                                                                                                                                           |
+| ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Permission denied @ dir_s_mkdir … /usr/lib/ruby/gems` | Bundler is trying to write to the system gem dir. Run the `bundle config set` line above.                                                                               |
+| `Could not find gem …` / `Run 'bundle install'`        | Gems not installed for this clone. Run `bundle install`.                                                                                                                |
+| `Your Ruby version is X, but your Gemfile specified Y` | Wrong Ruby active. Note rvm is on `PATH` here but does not manage the shell by default, so `/usr/bin/ruby` wins. `rvm use system` or open a shell without rvm.          |
+| `bundler: command not found: jekyll`                   | `bundle install` hasn't run, or ran under a different Ruby.                                                                                                             |
+| Bundler and Ruby versions disagree                     | `which bundle` currently resolves to a `ruby/3.3.0` path while `ruby -v` is 3.4.8. If things behave oddly, `gem install bundler` under the active Ruby to realign them. |
+| `Address already in use - bind(2) for 127.0.0.1:4000`  | A server is already running. Reuse it, or pass `--port 4001`.                                                                                                           |
+
 ## Running the site
 
 From the repo root:
@@ -21,21 +89,6 @@ Useful variations:
 | `--incremental`            | Skips unchanged files. Much faster — a full build is ~20 s, mostly ImageMagick regenerating WebP variants and jekyll-scholar processing the bibliography. |
 | `--port 4001`              | If port 4000 is already taken.                                                                                                                            |
 | `bundle exec jekyll build` | Build into `_site/` without serving.                                                                                                                      |
-
-### Gem path
-
-The system gem directory (`/usr/lib/ruby/gems`) isn't writable, so a plain
-`bundle exec jekyll serve` fails with `Permission denied @ dir_s_mkdir`. Gems
-are installed into `vendor/bundle` instead, configured once with:
-
-```bash
-bundle config set --local path vendor/bundle
-bundle install
-```
-
-This is stored in `.bundle/config`, which is gitignored — it's local to this
-checkout and persists, so it shouldn't need repeating. On a fresh clone, run
-both lines again.
 
 ## Formatting (Prettier)
 
